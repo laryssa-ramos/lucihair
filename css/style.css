@@ -405,7 +405,11 @@ section{
 @media (max-width:495px){
 
     .home{
-     height: 70vh;
+     height: 80vh;
+    }
+
+    .about .row .image img{
+        width: 90%;
     }
     
   }
