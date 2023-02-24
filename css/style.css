@@ -402,12 +402,16 @@ section{
 
 }
 
+@media (max-width:495px){
+
+    .home{
+     height: 50vh;
+    }
+    
+  }
+
 
 @media (max-width:435px){
-
-  .home{
-   height: 60vh;
-  }
   .home .content h3{
       font-size: 5rem;
   }
