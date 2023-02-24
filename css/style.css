@@ -239,34 +239,6 @@ section{
     cursor: pointer;
 }
 
-/* .services .box .inner::before,
-.services .box .inner::after{
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    transition: all 0.8s ease;
-}
-.services .box .inner::before{
-    bottom: 0;
-    left: 0;
-    border-bottom: 3px solid transparent;
-    border-left: 3px solid transparent;
-}
-.services .box .inner::after{
-    top: 0;
-    right: 0;
-    border-top: 3px solid transparent;
-    border-right: 3px solid transparent;
-}
-.services .box:hover .inner::before,
-.services .box:hover .inner::after{
-    border-color: var(--main-color);
-    width: 96.5%;
-    height: 96.5%;
-    cursor: pointer;
-} */
-
 
 /* jobs */
 
@@ -433,6 +405,9 @@ section{
 
 @media (max-width:435px){
 
+  .home .content{
+      margin: auto;
+  }
   .home .content h3{
       font-size: 5rem;
   }
