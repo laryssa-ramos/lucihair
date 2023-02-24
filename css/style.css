@@ -137,7 +137,7 @@ section{
 .home .content .btn{
     margin-top: 5rem;
     display: inline-block;
-    padding: 1rem 3rem;
+    padding: 1.7rem 3rem;
     font-size: 2.3rem;
     color: var(--main-color);
     background: var(--bg);
