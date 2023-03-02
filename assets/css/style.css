@@ -1,14 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;700;800&display=swap');
 
 :root{
-    --main-color: #3d8455;
-    --color: #68e491;
-    --bg:#d8fcc7;
-    --border:.1rem solid rgba(255, 255, 255, .3);
+/*--------COLORS--------*/
+--first-color:#22723e;
+--second-color:#d5ffcc;
+--third-color:#124022;
+--fourth-color:;
+--color-white:#fff;
+--color-black:#000;
+--bg:#d8fcc7;
+
+/*--------FONTS--------*/
+--font-cursive: 'Great Vibes', cursive;
+--body-font: 'Oswald', sans-serif;
+
+/*--------BORDER--------*/
+--border:.1rem solid rgba(255, 255, 255, .3);
+    
 }
 
 *{
-    font-family: 'Oswald', sans-serif;
+    font-family: var(--body-font);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,16 +33,18 @@
 html{
     font-size: 62.5%;
     overflow-x: hidden;
-    scroll-padding-top: 9rem;
+    scroll-padding-top: 11rem;
     scroll-behavior: smooth;
 }
 
 
 .heading{
     text-align: center;
-    color: var(--main-color);
+    color: var(--first-color);
+    font-family: var(--font-cursive);
     text-transform: capitalize;
-    font-size: 4rem;
+    font-weight: 500;
+    font-size: 4.5rem;
 }
 
 .grid{
@@ -41,7 +56,6 @@ section{
     padding: 2rem 7%;
 }
 .header{
-    background: var(--main-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,6 +65,8 @@ section{
     text-transform: capitalize;
     border-bottom: var(--border);
     position: fixed;
+    background: var(--color-white);
+    
    
     z-index: 1000;
 }
@@ -61,7 +77,7 @@ section{
 }
 
 .header .logo h3{
-    color: #fff;
+    color: var(--first-color);
     padding: 2.5rem 0 0 1rem;
     margin-left: 1rem;
 }
@@ -73,12 +89,12 @@ section{
     margin: 0 .5rem;
     padding: .3rem .7rem;
     font-size: 2rem;
-    color: #fff;
+    color: var(--first-color);
 }
 
 .header .navbar a:hover{
-    background-color: #fff;
-    color: var(--main-color);
+    background-color: var(--first-color);
+    color: var(--color-white);
     border-radius: .3rem;
 }
 
@@ -96,7 +112,7 @@ section{
 }
 
 #menu-btn:hover{
-    color: #fff;
+    color: var(--letter);
 }
 
 
@@ -131,7 +147,7 @@ section{
 
 .home .content h3{
     font-size: 6rem;
-    color: #fff;
+    color: var(--color-white);
 }
 
 .home .content .btn{
@@ -139,15 +155,15 @@ section{
     display: inline-block;
     padding: 1.7rem 3rem;
     font-size: 2.3rem;
-    color: var(--main-color);
-    background: var(--bg);
+    color: var(--color-white);
+    background: var(--first-color);
     border-radius: 0.5rem;
     cursor: pointer;
 }
 
 .home .content .btn:hover{
-    background: var(--main-color);
-    color: #fff;
+    background: var(--color-white);
+    color: var(--first-color);
 }
 
 .home .content .btn i{
@@ -155,36 +171,38 @@ section{
     margin-right: 1rem;
 }
 
-.about{
-    margin-top: 4rem;
+.about .heading{
+    margin: 1.5rem 0 2rem 0;
 }
 
-.about{
-    margin-bottom: 4rem;
+.about p{
+    font-weight: 300;
+    font-size: 2rem;
 }
+
 .about .row{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    border: 2px solid var(--main-color);
     border-radius: 30px;
-    width: 80%;
-    padding: 1rem;
+    width: 100%;
+    border: 2px solid var(--first-color);
     margin: 0 auto;
 }
 
 .about .row .image{
-    flex: 1 1 20rem;
+    flex: 1 1 25rem;
     text-align: center;
 }
 
 .about .row .image img{
     width: 60%;
-    margin-left: 5rem;
+    margin: 1rem;
+    border-radius: 50%;
 }
 
 .about .row .content{
-    flex: 1 1 20rem;
+    flex: 1 1 25rem;
     padding: 2rem;
 }
 
@@ -195,6 +213,12 @@ section{
     line-height: 1.8;
 }
 
+.about .video{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
 .service{
     background: var(--bg);
     padding-bottom: 5rem;
@@ -202,6 +226,7 @@ section{
 }
 
 .services{ 
+    
     position: relative;
     width: 80%;
     margin: 0 auto;
@@ -259,13 +284,10 @@ section{
 }
 
 
-@media (max-width: 1047px){
+@media (max-width: 1300px){
 
-    .about .row{
-       
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
+    .about .row .image img{
+        width: 70%;
     }
      
 }
@@ -291,6 +313,11 @@ section{
     }
 }
 
+@media (max-width: 50px){
+    .about .row .image img{
+        width: 70%;
+    }
+}
 
 
 @media (max-width: 830px){
@@ -312,7 +339,7 @@ section{
         position: absolute;
         top: 100%;
         right: -100%;
-        background-color:#fff ;
+        background-color:var(--color-white) ;
         width: 40%;
         text-align: center;
         height: 100vh;
@@ -320,19 +347,19 @@ section{
     }
 
     .header .navbar a{
-        color: var(--main-color);
+        color: var(--first-color);
         position: relative;
         display: block;
         padding: .5rem;
-        margin: 2rem;
-        font-size: 2.5rem;
+        margin: 1rem;
+        font-size: 2rem;
         transition: all 400ms ease;
     }
 
     .header .navbar a:hover,
     .header .navbar a.active-link{
-        color: #fff;
-        background-color: var(--main-color);
+        color: var(--color-white);
+        background-color: var(--first-color);
     }
 
     .header .navbar.active{
@@ -344,10 +371,12 @@ section{
         justify-content: center;
         text-align: center;
     }
+
+    
     
 }
 
-@media (max-width: 827px){
+@media (max-width: 780px){
 
     .about .row{
         display: block;
@@ -355,31 +384,39 @@ section{
         margin: 0 auto;
     }
 
-    .about .row .image{
-        margin-right: 7rem;
+    .about .row .image img{
+        width: 50%;
     }
 
     .about .row .content{
         text-align: justify;
     }
 
-    .service ul{
-        margin-left: 6rem;
-    }
-}
-
-@media (max-width:720px){
-    .service ul .two{
-        margin-left: 15rem;
+    .about .row .content p{
+        margin: 0 2rem;
     }
 
 }
+
+
+@media (max-width: 620px){
+
+    .about .row{
+        width: 100%;
+    }
+
+    .about .row .image img{
+        width: 70%;
+    }
+    
+}
+
 
 @media (max-width: 600px){
 
     .header .navbar{
        
-        background-color:#fff ;
+        background-color:var(--color-white);
         width: 60%;
         
     }
@@ -391,16 +428,6 @@ section{
     }
 }
 
-@media (max-width:553px){
-    .service ul{
-        display: block;
-    }
-
-    .service ul .two{
-        margin-left: 0rem;
-    }
-
-}
 
 @media (max-width:495px){
 
@@ -409,7 +436,7 @@ section{
     }
 
     .about .row .image img{
-        width: 90%;
+        width: 80%;
     }
     
   }
