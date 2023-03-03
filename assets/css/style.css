@@ -212,6 +212,10 @@ section{
     line-height: 1.8;
 }
 
+.about .row .content h3{
+    font-size: 3rem;
+}
+
 .about .video{
     display: flex;
     margin-top: 2rem;
@@ -315,7 +319,9 @@ section{
 
 @media (max-width: 830px){
 
-   
+   .header{
+    position: fixed;
+    }
    .header .icons{
         position: static;
         cursor: pointer;
@@ -399,7 +405,7 @@ section{
     }
 
     .about .row .image img{
-        width: 70%;
+        width: 50%;
     }
     
 }
