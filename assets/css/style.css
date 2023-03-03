@@ -32,7 +32,7 @@
 html{
     font-size: 62.5%;
     overflow-x: hidden;
-    scroll-padding-top: 11rem;
+    scroll-padding-top: 10rem;
     scroll-behavior: smooth;
 }
 
@@ -46,6 +46,18 @@ html{
     font-size: 4.5rem;
 }
 
+
+.btn{
+    margin-top: 5rem;
+    display: inline-block;
+    padding: 1.7rem 3rem;
+    font-size: 2.3rem;
+    color: var(--color-white);
+    background: var(--first-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
 .grid{
     display: grid;
     gap: 10px;
@@ -54,6 +66,9 @@ html{
 section{
     padding: 2rem 7%;
 }
+
+/* HEADER */
+
 .header{
     display: flex;
     align-items: center;
@@ -114,6 +129,9 @@ section{
     color: var(--letter);
 }
 
+/* HEADER */
+
+/* HOME */
 
 .home{
     position: relative;
@@ -149,15 +167,10 @@ section{
     color: var(--color-white);
 }
 
-.home .content .btn{
-    margin-top: 5rem;
-    display: inline-block;
-    padding: 1.7rem 3rem;
-    font-size: 2.3rem;
-    color: var(--color-white);
-    background: var(--first-color);
-    border-radius: 0.5rem;
-    cursor: pointer;
+
+.home .content .btn i{
+   font-size: 2.8rem;
+    margin-right: 1rem;
 }
 
 .home .content .btn:hover{
@@ -165,11 +178,9 @@ section{
     color: var(--first-color);
 }
 
-.home .content .btn i{
-   font-size: 2.8rem;
-    margin-right: 1rem;
-}
+/* HOME */
 
+/* ABOUT */
 .about .heading{
     margin: 1.5rem 0 2rem 0;
 }
@@ -185,7 +196,7 @@ section{
     flex-wrap: wrap;
     border-radius: 30px;
     width: 100%;
-    border: 2px solid var(--first-color);
+    border: 2.5px solid var(--first-color);
     margin: 0 auto;
 }
 
@@ -206,14 +217,14 @@ section{
 }
 
 .about .row .content p{
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: #000;
     padding: 1rem 0;
-    line-height: 1.8;
+    line-height: 1.5;
 }
 
 .about .row .content h3{
-    font-size: 3rem;
+    font-size: 3.2rem;
 }
 
 .about .video{
@@ -223,51 +234,68 @@ section{
     padding: 2rem;
 }
 
+/* ABOUT */
+
+/* THERAPY */
+
+.therapy{
+    background-color: var(--second-color);
+}
+
+.therapy .container p{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+}
+
+.therapy .container .content .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.therapy .container .content .box-container .box{
+    padding: .5rem;
+}
+
+.therapy .container .content .box-container img{
+   width: 20rem;
+   border-radius: 5px;
+}
+
+
+.therapy .container .content .box-container .box span{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.therapy .container .content .button{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.therapy .container .content .button a:hover{
+    transform: scale(1.1);
+}
+
+/* THERAPY */
+
 .service{
-    background: var(--bg);
     padding-bottom: 5rem;
 
 }
-
-.services{ 
-    
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-    padding: 1em;
-    text-align: center;
-    align-content: space-around;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
-
+.service .wrapper .carousel{
+    white-space: nowrap;
 }
 
-.service h1{
-    padding: 2rem 0;
+.service .wrapper .carousel img{
+    width: 100px;
+    object-fit: cover;
 }
-
-.services .box{
-    padding: 3px;
-}
-
-.services .box .inner{
-    font-size: 1.4rem;
-    padding: 7px;
-    position: relative;
-    border: 1px solid transparent;
-}
-
-.services .box .inner img{
-    width: 50px;
-    margin-bottom: var(--mb-1);
-}
-
-.services .box .inner:hover{
-   
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
 
 /* jobs */
 
@@ -320,8 +348,9 @@ section{
 @media (max-width: 830px){
 
    .header{
-    position: fixed;
+        position: fixed;
     }
+    
    .header .icons{
         position: static;
         cursor: pointer;
