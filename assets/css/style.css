@@ -441,7 +441,7 @@ section{
     
   }
 
-  @media (max-width:460px){
+  @media (max-width:480px){
     .about .video iframe{
         height: 220px;
     }
