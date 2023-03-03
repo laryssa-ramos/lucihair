@@ -213,9 +213,10 @@ section{
 }
 
 .about .video{
-    margin-top: 2rem;
     display: flex;
+    margin-top: 2rem;
     justify-content: center;
+    padding: 2rem;
 }
 
 .service{
@@ -311,13 +312,6 @@ section{
     
     }
 }
-
-@media (max-width: 50px){
-    .about .row .image img{
-        width: 70%;
-    }
-}
-
 
 @media (max-width: 830px){
 
@@ -428,6 +422,13 @@ section{
 }
 
 
+@media (max-width:540px){
+    .about .video iframe{
+        height: 250px;
+    }
+}
+
+
 @media (max-width:495px){
 
     .home{
@@ -439,6 +440,12 @@ section{
     }
     
   }
+
+  @media (max-width:460px){
+    .about .video iframe{
+        height: 220px;
+    }
+}
 
 
 @media (max-width:435px){
