@@ -429,7 +429,7 @@ section {
 
     .service .container {
 
-        min-height: 30vh;
+        min-height: 35vh;
     }
 
 }
@@ -526,7 +526,7 @@ section {
 @media screen and (max-width: 690px) {
 
     .service .container {
-        min-height: 20vh;
+        min-height: 25vh;
     }
 
      .service .wrapper {
