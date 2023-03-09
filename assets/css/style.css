@@ -262,9 +262,14 @@ section {
     padding: .5rem;
 }
 
-.therapy .container .content .box-container img {
+.therapy .container .content .box-container .box img {
     width: 20rem;
     border-radius: 5px;
+}
+
+.therapy .container .content img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 
@@ -280,10 +285,6 @@ section {
     margin-bottom: 2rem;
 }
 
-.therapy .container .content img:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
 
 .therapy .container .content .button a:hover {
     transform: scale(1.1);
@@ -301,7 +302,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 40vh;
+    min-height: 57vh;
 }
 
 .service .wrapper {
@@ -429,7 +430,7 @@ section {
 
     .service .container {
 
-        min-height: 35vh;
+        min-height: 40vh;
     }
 
 }
@@ -526,7 +527,7 @@ section {
 @media screen and (max-width: 690px) {
 
     .service .container {
-        min-height: 25vh;
+        min-height: 30vh;
     }
 
      .service .wrapper {
@@ -579,12 +580,22 @@ section {
         width: 80%;
     }
 
+    .service .container {
+
+        min-height: 27vh;
+    }
+
 }
 
 @media (max-width:480px) {
     
     .about .video iframe {
         height: 220px;
+    }
+
+    .therapy .container .content .box-container .box img {
+        width: 15rem;
+        border-radius: 5px;
     }
 
     .service .wrapper {
@@ -595,6 +606,7 @@ section {
        
         width: 12rem;
     }
+    
 }
 
 
