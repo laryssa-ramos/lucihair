@@ -44,6 +44,7 @@ html {
     text-transform: capitalize;
     font-weight: 500;
     font-size: 4.5rem;
+    margin: 2rem 0;
 }
 
 
@@ -57,10 +58,8 @@ html {
     border-radius: 0.5rem;
     cursor: pointer;
 }
-
-.grid {
-    display: grid;
-    gap: 10px;
+.background {
+    background-color: var(--second-color);
 }
 
 section {
@@ -163,7 +162,7 @@ section {
     z-index: 2;
 }
 
-.home .content h3 {
+.home .content h1 {
     font-size: 6rem;
     color: var(--color-white);
 }
@@ -238,10 +237,6 @@ section {
 /* ABOUT */
 
 /* THERAPY */
-
-.therapy {
-    background-color: var(--second-color);
-}
 
 .therapy .container p {
     display: flex;
@@ -380,6 +375,9 @@ section {
 /* jobs */
 
 
+.jobs h2{
+    margin-bottom: 3rem;
+}
 
 .jobs .gallery .image {
     display: flex;
@@ -391,6 +389,7 @@ section {
 
 .jobs .gallery .image img {
     width: 20rem;
+    border-radius: 10px;
     height: 100%;
     padding: 5px;
 }
@@ -410,7 +409,7 @@ section {
 
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1100px) {
 
     html {
         font-size: 55%;
@@ -595,7 +594,6 @@ section {
 
     .therapy .container .content .box-container .box img {
         width: 15rem;
-        border-radius: 5px;
     }
 
     .service .wrapper {
@@ -605,6 +603,9 @@ section {
     .service .wrapper .carousel .box img{
        
         width: 12rem;
+    }
+    .jobs .gallery .image img{
+        width: 15rem;
     }
     
 }
