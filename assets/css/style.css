@@ -353,15 +353,19 @@ section {
     flex-direction: column;
     align-items: center;
     margin: 0 0 20px 20px;
+    
 }
 
 .service .wrapper .carousel .box img {
     object-fit: cover;
+    height: 25rem;
     width: 18rem;
+    border-radius: 10px;
 }
 
 .carousel .box span {
-    font-size: 2rem;
+    margin-top: 1.3rem;
+    font-size: 2.4rem;
 
 }
 
@@ -552,13 +556,9 @@ section {
     }
 
      .service .wrapper {
-        max-width: 60rem;
+        max-width: 100%;
     }
 
-    .service .wrapper .carousel .box img{
-       
-        width: 15rem;
-    }
 }
 
 
@@ -591,9 +591,6 @@ section {
         margin-top: 5rem;
     }
 
-    .service .wrapper {
-        max-width: 45rem;
-    }
 }
 
 
@@ -646,14 +643,6 @@ section {
         width: 15rem;
     }
 
-    .service .wrapper {
-        max-width: 40rem;
-    }
-
-    .service .wrapper .carousel .box img{
-       
-        width: 12rem;
-    }
     .jobs .gallery .image img{
         width: 15rem;
     }
@@ -665,10 +654,6 @@ section {
 
     .home .content h3 {
         font-size: 5rem;
-    }
-
-    .service .wrapper {
-        max-width: 30rem;
     }
 
 }
