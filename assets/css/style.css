@@ -384,14 +384,16 @@ section {
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
-    width: 85%;
+    width: 90%;
 }
 
 .jobs .gallery .image img {
+
     width: 20rem;
     border-radius: 10px;
     height: 100%;
     padding: 5px;
+    object-fit: cover;
 }
 .jobs a{
     color: var(--first-color);
