@@ -292,6 +292,14 @@ section {
 
 }
 
+.service p{
+    display: flex;
+    justify-content: center;
+    font-size: 2.3rem;
+    font-weight: 300;
+    margin: -.7rem 0 3rem;
+}
+
 .service .container {
 
     display: flex;
@@ -383,6 +391,14 @@ section {
     margin-bottom: 3rem;
 }
 
+.jobs p{
+    display: flex;
+    justify-content: center;
+    font-size: 2.3rem;
+    font-weight: 300;
+    margin: -2.5rem 0 2rem 0;
+}
+
 .jobs .gallery .image {
     display: flex;
     flex-wrap: wrap;
@@ -456,6 +472,11 @@ section {
     .service .container {
 
         min-height: 40vh;
+    }
+
+    .service p{
+
+        margin-bottom: 5rem;
     }
 
 }
@@ -619,7 +640,7 @@ section {
 @media (max-width:495px) {
 
     .home .content h1{
-        font-size: 4rem;
+        font-size: 5.2rem;
     }
 
     .about .row .image img {
@@ -663,5 +684,9 @@ section {
 
     .home .content{
         margin-top: 6rem;
+    }
+
+    .home .content h1{
+        font-size: 4rem;
     }
 }
