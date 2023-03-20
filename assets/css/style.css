@@ -271,7 +271,8 @@ section {
 .therapy .container .content .box-container .box span {
     display: flex;
     justify-content: center;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
+    margin-top: 1rem;
 }
 
 .therapy .container .content .button {
@@ -510,6 +511,7 @@ section {
         margin: 1rem;
         font-size: 2.5rem;
         transition: all 400ms ease;
+        border-bottom: 1px solid grey;
     }
 
     .header .navbar a:hover,
@@ -569,6 +571,7 @@ section {
     .about .row .content p {
         margin: 0 2rem;
     }
+
 
 }
 
@@ -648,6 +651,7 @@ section {
     .about .row .image img {
         width: 80%;
     }
+    
 
     .service .container {
 
@@ -663,7 +667,7 @@ section {
     }
 
     .therapy .container .content .box-container .box img {
-        width: 15rem;
+        width: 18rem;
     }
 
     .jobs .gallery .image img{
