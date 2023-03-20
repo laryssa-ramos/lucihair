@@ -311,7 +311,7 @@ section {
 
 .service .wrapper {
     position: relative;
-    max-width: 90rem;
+    max-width: 100rem;
 }
 
 .service .wrapper i {
