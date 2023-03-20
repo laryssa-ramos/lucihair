@@ -454,7 +454,7 @@ section {
 @media (max-width: 1100px) {
 
     html {
-        font-size: 50%;
+        font-size: 60%;
     }
 
     .header {
@@ -467,31 +467,14 @@ section {
 
 }
 
-@media screen and (max-width: 900px) {
-
-    .service .container {
-
-        min-height: 40vh;
+@media (max-width: 1070px){
+    .header .navbar a {
+        font-size: 1.8rem;
     }
-
-    .service p{
-
-        margin-bottom: 5rem;
-    }
-
 }
 
-@media (max-width: 870px) {
-
-    .service .wrapper {
-        max-width: 70rem;
-    }
-
-}
-
-
-@media (max-width: 830px) {
-
+@media (max-width: 1000px) {
+    
     .header {
         position: fixed;
     }
@@ -545,8 +528,27 @@ section {
         text-align: center;
     }
 
+    .service .container {
+
+        min-height: 40vh;
+    }
+
+    .service p{
+
+        margin-bottom: 5rem;
+    }
+    
 
 }
+
+@media (max-width: 870px) {
+
+    .service .wrapper {
+        max-width: 70rem;
+    }
+
+}
+
 
 @media (max-width: 780px) {
 
