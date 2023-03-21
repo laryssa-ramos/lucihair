@@ -682,6 +682,11 @@ section {
     .about .video iframe {
         height: 250px;
     }
+
+    .therapy .container p{ 
+    font-size: 2rem;
+}
+
 }
 
 @media (max-height: 530px){
@@ -697,7 +702,7 @@ section {
     }
 
     .depositions .box-container .box .descripition p{
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 300;
         padding: 0 1rem 1rem 0;
     }
@@ -715,6 +720,9 @@ section {
         width: 80%;
     }
     
+    .therapy .container p{
+        font-size: 2rem;
+    }
 
     .service .container {
 
@@ -750,12 +758,15 @@ section {
         margin-left: 4.5rem;
     }
 
+}
+
+@media (max-width: 400px){
+
     .depositions .box-container .box .descripition p{
         font-size: 1.5rem;
     }
-    
-
 }
+
 
 
 @media (max-height: 370px){
@@ -767,4 +778,7 @@ section {
     .home .content h1{
         font-size: 4rem;
     }
+    
 }
+
+
