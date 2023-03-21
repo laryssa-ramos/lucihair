@@ -62,6 +62,13 @@ html {
     background-color: var(--second-color);
 }
 
+.p{
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
 section {
     padding: 2rem 7%;
 }
@@ -185,11 +192,6 @@ section {
     margin: 1.5rem 0 2rem 0;
 }
 
-.about p {
-    font-weight: 300;
-    font-size: 2rem;
-}
-
 .about .row {
     display: flex;
     align-items: center;
@@ -217,14 +219,14 @@ section {
 }
 
 .about .row .content p {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #000;
     padding: 1rem 0;
     line-height: 1.5;
 }
 
 .about .row .content h3 {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
 }
 
 .about .video {
@@ -238,12 +240,8 @@ section {
 
 /* THERAPY */
 
-.therapy .container p {
-    display: flex;
-    justify-content: center;
+.therapy .container{
     margin-top: 1rem;
-    font-size: 2rem;
-    font-weight: 300;
 }
 
 .therapy .container .content .box-container {
@@ -294,10 +292,6 @@ section {
 }
 
 .service p{
-    display: flex;
-    justify-content: center;
-    font-size: 2.3rem;
-    font-weight: 300;
     margin: -.7rem 0 3rem;
 }
 
@@ -393,10 +387,6 @@ section {
 }
 
 .jobs p{
-    display: flex;
-    justify-content: center;
-    font-size: 2.3rem;
-    font-weight: 300;
     margin: -2.5rem 0 2rem 0;
 }
 
@@ -438,8 +428,75 @@ section {
 }
 
 
+/* depositions */
 
 
+
+.depositions p{
+    margin: -2rem 0 2rem 0;
+}
+
+
+.depositions .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.depositions .box-container .box{
+    position: relative;
+    width: 420px;
+    height: 30rem;
+    background-color: var(--bg);
+    border-radius: 10px;
+    padding: 2.5rem;
+    margin: 1rem;
+}
+
+
+.depositions .box-container .box .content{
+    display: flex;
+    align-items: center;
+}
+
+.depositions .box-container .box .content img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.depositions .box-container .box .content .star{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 7rem;
+}
+
+.depositions .box-container .box .content .star i{
+    font-size: 2rem;
+    color: var(--first-color);
+}
+
+.depositions .box-container .box .content .star h1{
+    font-size: 2.5rem;
+}
+
+.depositions .box-container .box .descripition{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 40%;
+}
+
+.depositions .box-container .box .descripition p{
+    font-size: 1.7rem;
+    font-weight: 300;
+    padding: 1rem 1.5rem 1.2rem 0;
+}
+
+/* depositions */
 
 
 
@@ -638,6 +695,12 @@ section {
     .about .row .image img {
         width: 40%;
     }
+
+    .depositions .box-container .box .descripition p{
+        font-size: 1.5rem;
+        font-weight: 300;
+        padding: 0 1rem 1rem 0;
+    }
 }
 
 
@@ -682,6 +745,15 @@ section {
     .home .content h3 {
         font-size: 5rem;
     }
+
+    .depositions .box-container .box .content .star{
+        margin-left: 4.5rem;
+    }
+
+    .depositions .box-container .box .descripition p{
+        font-size: 1.5rem;
+    }
+    
 
 }
 
