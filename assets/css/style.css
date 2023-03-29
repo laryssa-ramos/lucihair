@@ -498,6 +498,84 @@ section {
 /* depositions */
 
 
+/* information */
+
+.information .information__content{
+    max-width: 100rem ;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(171, 171, 171);
+
+   
+}
+
+
+.information .information__content .container{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 4rem;
+
+}
+
+.information .information__content .title{
+    font-size: 2.5rem;
+}
+
+.information .information__content span{
+    font-size: 1.8rem;
+}
+
+.information .information__content .container .time{
+   margin-bottom: 5rem;
+}
+
+
+.information .information__content .map{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+.information .information__content .map iframe{
+    width: 400px;
+    height: 300px;
+    margin: 1rem 0;
+}
+
+
+.information .information__content .image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.information .information__content .image img{
+    width: 18rem;
+}
+
+
+.information .information__content .image a{
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.information .information__content .image a:hover{
+    color: var(--first-color);
+}
+
+
+
+
+
+/* information */
+
 
 
 @media (max-width: 1300px) {
@@ -607,7 +685,6 @@ section {
 
 }
 
-
 @media (max-width: 780px) {
 
     .about .row {
@@ -631,6 +708,14 @@ section {
 
 }
 
+@media (max-width:748px){
+
+    .information .information__content .image{
+        margin-bottom: 2.5rem;
+    }    
+
+}
+
 @media screen and (max-width: 690px) {
 
     .service .container {
@@ -643,6 +728,22 @@ section {
 
 }
 
+
+@media(max-width: 683px){
+
+    .information .information__content .container{
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+    }
+
+    .information .information__content .container .time{
+        margin-right: 15rem;
+    }
+    
+}
 
 
 @media (max-width: 620px) {
@@ -742,6 +843,24 @@ section {
 
     .jobs .gallery .image img{
         width: 15rem;
+    }
+    
+}
+
+@media(max-width: 450px){
+
+    .information .information__content .container .time{
+        margin-right: 5rem;
+    }
+    
+    .information .information__content .map iframe{
+        width: 300px;
+        height: 200px;
+        margin: 1rem 0;
+    }
+
+    .information .information__content .image img{
+        width: 14rem;
     }
     
 }
