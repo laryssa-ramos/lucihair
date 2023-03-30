@@ -564,14 +564,24 @@ section {
 .information .information__content .image a{
     font-size: 1.8rem;
     color: #000;
+    cursor: pointer;
 }
 
 .information .information__content .image a:hover{
     color: var(--first-color);
+  
 }
 
+footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
 
-
+footer p{
+    font-size: 1.4rem;
+    font-weight: 300;
+}
 
 
 /* information */
@@ -767,7 +777,7 @@ section {
 @media (max-width: 580px) {
 
     .home{
-        height: 90vh;
+        height: 94vh;
     }
 
     .home .content{
@@ -779,6 +789,10 @@ section {
 
 @media (max-width:540px) {
     
+    .about .row .content p {
+        font-size: 1.8rem;
+    }
+
     .about .video iframe {
         height: 250px;
     }
