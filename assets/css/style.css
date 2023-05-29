@@ -143,14 +143,14 @@ section {
     position: relative;
     height: 96vh;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    background: url('../images/bg.jpg') no-repeat;
+    background: url('../images/bg.jpeg') no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-position: center center;
 }
-
+/* 
 .home::after {
     content: '';
     background-color: rgba(159, 158, 158, 0.876);
@@ -161,7 +161,7 @@ section {
     top: 0;
     opacity: .7;
     z-index: 1;
-}
+} */
 
 .home .content {
     
@@ -171,7 +171,7 @@ section {
 
 .home .content h1 {
     font-size: 8rem;
-    color: rgb(18, 79, 43);
+    color: var(--color-white);
 }
 
 
