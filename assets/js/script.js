@@ -6,7 +6,7 @@ let navbar = document.querySelector('.navbar');
 document.querySelector('#menu-btn').onclick = () =>{
     navbar.classList.toggle('active');
     
-}
+} 
 
 /*------------ REMOVER MENU MOBILE -------------*/
 const navLink = document.querySelectorAll('.link')
@@ -23,7 +23,7 @@ const carousel = document.querySelector(".carousel"),
 firstImg = carousel.querySelectorAll(".img")[0];
 arrowIcons = document.querySelectorAll(".wrapper i");
 
-let isDragStart = false, prevPageX, prevScrollLeft;
+let isDragStart = false, prevPageX, prevScrollLeft; 
 
 
 
