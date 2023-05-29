@@ -80,7 +80,7 @@ section {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding-right:3%;
+    padding: 0 3%;
     text-transform: capitalize;
     border-bottom: var(--border);
     position: fixed;
@@ -107,7 +107,6 @@ section {
 }
 
 .header .navbar a {
-    margin: 0 .2rem;
     padding: .3rem .7rem;
     font-size: 2rem;
     color: var(--first-color);
@@ -645,6 +644,10 @@ footer p{
 
     }
 
+    .header {
+        padding: 0;
+    }
+    
     .header .navbar {
         position: absolute;
         top: 100%;
