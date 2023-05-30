@@ -122,8 +122,9 @@ section {
     position: absolute;
     cursor: pointer;
     font-size: 2.5rem;
-    margin-left: 2rem; 
+    margin-right: 2rem; 
 }
+
 
 
 #menu-btn {
@@ -644,10 +645,6 @@ footer p{
 
     }
 
-    .header {
-        padding: 0;
-    }
-    
     .header .navbar {
         position: absolute;
         top: 100%;
