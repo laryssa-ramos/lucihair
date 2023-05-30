@@ -158,6 +158,7 @@ section {
     background: url(../images/bg.jpeg) no-repeat;
     background-size: cover;
     background-position: top center;
+    background-attachment: fixed;
 
 }
 
@@ -817,10 +818,7 @@ footer p{
         height: 65vh;
     }
 
-    .home .content{
-        margin-top: 5rem;
-    }
-
+ 
     .home .content h1 {
         font-size: 5rem;
     }
