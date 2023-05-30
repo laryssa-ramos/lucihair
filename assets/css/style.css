@@ -177,7 +177,7 @@ section {
 
 .home::after {
     content: '';
-    background-color: rgba(224, 224, 224, 0.876);
+    background-color: rgba(175, 175, 175, 0.876);
     position: absolute;
     width: 100%;
     height: 100%;
