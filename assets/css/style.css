@@ -141,16 +141,24 @@ section {
 /* HOME */
 
 .home {
-    position: relative;
-    height: 96vh;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    background: url('../images/bg.jpeg') no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
+ padding: 0;
+ 
+  
 }
+
+.home .image{
+   
+}
+
+.home .image img{
+    margin-top: 5rem;
+   width: 100%;
+   
+    object-fit: contain;
+  
+}
+
+
 /* 
 .home::after {
     content: '';
@@ -163,12 +171,6 @@ section {
     opacity: .7;
     z-index: 1;
 } */
-
-.home .content {
-    
-    max-width: 60rem;
-    z-index: 2;
-}
 
 .home .content h1 {
     font-size: 8rem;
@@ -677,11 +679,7 @@ footer p{
         right: 0;
     }
 
-    .home {
-        background-position: top center;
-        justify-content: center;
-        text-align: center;
-    }
+  
 
     .service .container {
 
@@ -735,10 +733,6 @@ footer p{
 }
 
 @media screen and (max-width: 690px) {
-
-    .home {
-        height: 70vh;
-    }
 
     .service .container {
         min-height: 30vh;
@@ -813,11 +807,6 @@ footer p{
 
 @media (max-height: 530px){
 
-    .home .content .btn{
-        margin-top: 3rem;
-    }
-
-  
 
     .about .row .image img {
         width: 40%;
@@ -834,9 +823,6 @@ footer p{
 
 @media (max-width:495px) {
 
-    .home .content h1{
-        font-size: 5.2rem;
-    }
 
     .about .row .image img {
         width: 80%;
@@ -890,9 +876,6 @@ footer p{
 
 @media (max-width:440px) {
 
-    .home .content h3 {
-        font-size: 5rem;
-    }
 
     .depositions .box-container .box .content .star{
         margin-left: 4.5rem;
