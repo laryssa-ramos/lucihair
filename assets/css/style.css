@@ -3,7 +3,7 @@
 
 :root {
     /*--------COLORS--------*/
-    --first-color: #22723e; 
+    --first-color: #22723e;
     --second-color: #d5ffcc;
     --third-color: #124022;
     --color-white: #fff;
@@ -134,7 +134,7 @@ section {
     position: absolute;
     cursor: pointer;
     font-size: 2.5rem;
-    margin-right: 2rem; 
+    margin-right: 2rem;
 }
 
 
@@ -155,7 +155,7 @@ section {
 .home {
     position: relative;
     height: 94vh;
-    background: url(../images/bg.jpeg) no-repeat;
+    background: url(../images/bg.jpg) no-repeat;
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
@@ -178,7 +178,7 @@ section {
 
 .home::after {
     content: '';
-    background-color: rgba(175, 175, 175, 0.876);
+    background-color: rgba(175, 172, 172, 0.768);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -243,7 +243,7 @@ section {
     color: #000;
     padding: 1rem 0;
     line-height: 1.5;
-   
+
 }
 
 .about .row .content h3 {
@@ -381,7 +381,7 @@ section {
     flex-direction: column;
     align-items: center;
     margin: 0 0 20px 20px;
-    
+
 }
 
 .service .wrapper .carousel .box img {
@@ -539,7 +539,7 @@ section {
     align-items: center;
     border-bottom: 1px solid rgb(171, 171, 171);
 
-   
+
 }
 
 
@@ -599,7 +599,7 @@ section {
 
 .information .information__content .image a:hover{
     color: var(--first-color);
-  
+
 }
 
 footer{
@@ -646,7 +646,7 @@ footer p{
 }
 
 @media (max-width: 1000px) {
-    
+
     /* .header {
         position: fixed;
     } */
@@ -704,9 +704,9 @@ footer p{
         transform: translate(-50%, -50%);
         color: white;
       }
-      
 
-  
+
+
 
     .service .container {
 
@@ -717,7 +717,7 @@ footer p{
 
         margin-bottom: 5rem;
     }
-    
+
 
 }
 
@@ -755,7 +755,7 @@ footer p{
 
     .information .information__content .image{
         margin-bottom: 2.5rem;
-    }    
+    }
 
 }
 
@@ -784,13 +784,13 @@ footer p{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    
+
     }
 
     .information .information__content .container .time{
         margin-right: 15rem;
     }
-    
+
 }
 
 
@@ -818,7 +818,7 @@ footer p{
         height: 65vh;
     }
 
- 
+
     .home .content h1 {
         font-size: 5rem;
     }
@@ -827,7 +827,7 @@ footer p{
 
 
 @media (max-width:540px) {
-    
+
     .about .row .content p {
         font-size: 1.8rem;
     }
@@ -836,7 +836,7 @@ footer p{
         height: 250px;
     }
 
-    .therapy .container p{ 
+    .therapy .container p{
     font-size: 2rem;
 }
 
@@ -864,7 +864,7 @@ footer p{
     .about .row .image img {
         width: 80%;
     }
-    
+
     .therapy .container p{
         font-size: 2rem;
     }
@@ -877,7 +877,7 @@ footer p{
 }
 
 @media (max-width:480px) {
-    
+
     .about .video iframe {
         height: 220px;
     }
@@ -889,7 +889,7 @@ footer p{
     .jobs .gallery .image img{
         width: 15rem;
     }
-    
+
 }
 
 @media(max-width: 450px){
@@ -897,7 +897,7 @@ footer p{
     .information .information__content .container .time{
         margin-right: 5rem;
     }
-    
+
     .information .information__content .map iframe{
         width: 300px;
         height: 200px;
@@ -907,7 +907,7 @@ footer p{
     .information .information__content .image img{
         width: 14rem;
     }
-    
+
 }
 
 
@@ -938,7 +938,7 @@ footer p{
     .home .content h1{
         font-size: 4rem;
     }
-    
+
 }
 
 
