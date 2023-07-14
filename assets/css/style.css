@@ -815,12 +815,12 @@ footer p{
 @media (max-width: 580px) {
 
     .home{
-        height: 65vh;
+        height: 70vh;
     }
 
 
     .home .content h1 {
-        margin-top: 2.5rem;
+        margin-top: 5rem;
         font-size: 5rem;
     }
 
