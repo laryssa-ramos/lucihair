@@ -72,15 +72,15 @@ carousel.addEventListener("mouseleave", dragStop);
 
 /*------------ ANIMAÇÃO -------------*/
 
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2500,
-    delay: 150,
-    //reset:true
-})
+// const sr = ScrollReveal({
+//     origin: 'top',
+//     distance: '60px',
+//     duration: 2500,
+//     delay: 150,
+//     //reset:true
+// })
 
-sr.reveal('.scroll')
-sr.reveal('.scroll-box', {interval: 100})
-sr.reveal('.scroll-left', {origin: 'left'})
-sr.reveal('.scroll-right', {origin: 'right'})
+// sr.reveal('.scroll')
+// sr.reveal('.scroll-box', {interval: 100})
+// sr.reveal('.scroll-left', {origin: 'left'})
+// sr.reveal('.scroll-right', {origin: 'right'})
