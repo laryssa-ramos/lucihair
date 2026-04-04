@@ -72,15 +72,23 @@ carousel.addEventListener("mouseleave", dragStop);
 
 /*------------ ANIMAÇÃO -------------*/
 
-// const sr = ScrollReveal({
-//     origin: 'top',
-//     distance: '60px',
-//     duration: 2500,
-//     delay: 150,
-//     //reset:true
-// })
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 2000,
+    delay: 200,
+})
 
-// sr.reveal('.scroll')
-// sr.reveal('.scroll-box', {interval: 100})
-// sr.reveal('.scroll-left', {origin: 'left'})
-// sr.reveal('.scroll-right', {origin: 'right'})
+sr.reveal('.scroll')
+sr.reveal('.scroll-box', {interval: 200})
+sr.reveal('.scroll-left', {origin: 'left'})
+sr.reveal('.scroll-right', {origin: 'right'})
+
+sr.reveal('.heading', {origin: 'top', distance: '40px', duration: 1500})
+sr.reveal('.p', {origin: 'bottom', distance: '30px', delay: 300})
+sr.reveal('.information .container', {origin: 'left', distance: '50px', interval: 200})
+sr.reveal('.information .map', {origin: 'bottom', distance: '50px', delay: 400})
+sr.reveal('.information .image', {origin: 'right', distance: '50px', delay: 500})
+sr.reveal('.depositions .box-container .box', {interval: 200, origin: 'bottom', distance: '40px'})
+sr.reveal('.jobs a', {origin: 'bottom', delay: 600})
+sr.reveal('footer', {origin: 'bottom', distance: '20px', delay: 300})
