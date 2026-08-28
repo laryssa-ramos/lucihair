@@ -1,94 +1,162 @@
+/* =========================================================================
+   Studio Luci Hair Therapy — comportamento da interface.
+   Sem ScrollReveal, sem Font Awesome, sem Boxicons.
+   ========================================================================= */
+(function () {
+  'use strict';
 
-/*------------ MENU MOBILE -------------*/
+  var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let navbar = document.querySelector('.navbar');
+  /* ---------- ano no rodapé ---------- */
+  document.querySelectorAll('[data-ano]').forEach(function (el) {
+    el.textContent = String(new Date().getFullYear());
+  });
 
-document.querySelector('#menu-btn').onclick = () =>{
-    navbar.classList.toggle('active');
-    
-} 
+  /* ---------- cabeçalho: transparente sobre o hero, sólido depois ---------- */
+  var cabecalho = document.querySelector('.cabecalho');
+  var hero = document.querySelector('.hero');
 
-/*------------ REMOVER MENU MOBILE -------------*/
-const navLink = document.querySelectorAll('.link')
-function linkAction() {
-    const navMenu = document.getElementById('nav')
-    /*Quando um link ou o botão close for clicado a class show-menu será removido*/
-    navMenu.classList.remove('active')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
+  if (cabecalho && hero) {
+    var marcarCabecalho = function () {
+      // Vira sólido quando o hero já saiu quase todo da tela.
+      var limite = hero.offsetHeight - cabecalho.offsetHeight - 20;
+      cabecalho.classList.toggle('solido', window.scrollY > limite);
+    };
+    window.addEventListener('scroll', marcarCabecalho, { passive: true });
+    window.addEventListener('resize', marcarCabecalho);
+    marcarCabecalho();
+  } else if (cabecalho) {
+    cabecalho.classList.add('solido');
+  }
 
-/*------------ CAROUSEL -------------*/
+  /* ---------- menu mobile ---------- */
+  var botao = document.querySelector('.menu-btn');
+  var menu = document.getElementById('menu');
 
-const carousel = document.querySelector(".carousel"),
-firstImg = carousel.querySelectorAll(".img")[0];
-arrowIcons = document.querySelectorAll(".wrapper i");
+  if (botao && menu) {
+    var alternar = function (abrir) {
+      botao.setAttribute('aria-expanded', String(abrir));
+      botao.setAttribute('aria-label', abrir ? 'Fechar menu' : 'Abrir menu');
+      menu.classList.toggle('aberto', abrir);
+      document.body.style.overflow = abrir ? 'hidden' : '';
+      if (abrir) {
+        var primeiro = menu.querySelector('a');
+        if (primeiro) primeiro.focus();
+      }
+    };
 
-let isDragStart = false, prevPageX, prevScrollLeft; 
+    botao.addEventListener('click', function () {
+      alternar(botao.getAttribute('aria-expanded') !== 'true');
+    });
 
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) alternar(false);
+    });
 
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && botao.getAttribute('aria-expanded') === 'true') {
+        alternar(false);
+        botao.focus();
+      }
+    });
 
-const showHideIcons = () => {
-    let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
-    arrowIcons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
-    arrowIcons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
-}
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 900) alternar(false);
+    });
+  }
 
-arrowIcons.forEach(icon => {
-    icon.addEventListener("click", () => {
-        let firstImgWidth = firstImg.clientWidth + 50;
-        carousel.scrollLeft += icon.id == "left" ? -firstImgWidth : firstImgWidth;
-        setTimeout(() => showHideIcons(), 60);
-    })
-});
+  /* ---------- revelação ao rolar ---------- */
+  var alvos = document.querySelectorAll('.reveal');
 
-const dragStart = (e) => {
-    isDragStart = true;
-    prevPageX = e.pageX || e.touches[0].pageX;
-    prevScrollLeft = carousel.scrollLeft;
-}
+  if (alvos.length) {
+    if (semMovimento || !('IntersectionObserver' in window)) {
+      alvos.forEach(function (el) { el.classList.add('visivel'); });
+    } else {
+      requestAnimationFrame(function () {
+        alvos.forEach(function (el) { el.classList.add('reveal-pronto'); });
+      });
 
-const dragging = (e) => {
+      var observador = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (entrada) {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add('visivel');
+            observador.unobserve(entrada.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
 
-    if(!isDragStart) return;
-    e.preventDefault();
-    carousel.classList.add("dragging");
-    let positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-    carousel.scrollLeft = prevScrollLeft - positionDiff;
-    showHideIcons();
-}
+      alvos.forEach(function (el) { observador.observe(el); });
+    }
+  }
 
-const dragStop = () => {
-    isDragStart = false;
-    carousel.classList.remove("dragging");
-}
+  /* ---------------------------------------------------------------------
+     Carrossel de serviços
+     O scroll é nativo (scroll-snap); isto só pilota os botões, a barra de
+     progresso e o contador.
+     --------------------------------------------------------------------- */
+  var carrossel = document.getElementById('carrossel');
 
-carousel.addEventListener("mousedown", dragStart);
+  if (carrossel) {
+    var trilho = carrossel.querySelector('.trilho');
+    var ant = carrossel.querySelector('[data-ant]');
+    var prox = carrossel.querySelector('[data-prox]');
+    var barra = carrossel.querySelector('[data-barra]');
+    var conta = carrossel.querySelector('[data-conta]');
+    // 'auto' delega ao scroll-behavior do CSS (que é smooth); só 'instant'
+    // desliga mesmo a animação para quem pediu menos movimento.
+    var modo = semMovimento ? 'instant' : 'smooth';
 
-carousel.addEventListener("mousemove", dragging);
+    var passo = function () {
+      var item = trilho.querySelector('.servico');
+      if (!item) return trilho.clientWidth;
+      var largura = item.getBoundingClientRect().width;
+      var gap = parseFloat(getComputedStyle(trilho).columnGap) || 0;
+      var porTela = Math.max(1, Math.round(trilho.clientWidth / (largura + gap)));
+      return (largura + gap) * porTela;
+    };
 
+    var atualizar = function () {
+      var max = trilho.scrollWidth - trilho.clientWidth;
+      var x = trilho.scrollLeft;
 
-carousel.addEventListener("mouseup", dragStop);
-carousel.addEventListener("mouseleave", dragStop);
+      ant.disabled = x <= 1;
+      prox.disabled = x >= max - 1;
 
-/*------------ ANIMAÇÃO -------------*/
+      if (barra) {
+        var visivel = trilho.clientWidth / (trilho.scrollWidth || 1);
+        var deslocamento = max > 0 ? (x / max) * (1 - visivel) : 0;
+        barra.style.transform = 'translateX(' + (deslocamento * 100) + '%) scaleX(' + visivel + ')';
+      }
 
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-})
+      if (conta) {
+        var itens = trilho.querySelectorAll('.servico');
+        var item = itens[0];
+        if (itens.length && item) {
+          var largura = item.getBoundingClientRect().width;
+          var gap = parseFloat(getComputedStyle(trilho).columnGap) || 0;
+          var porTela = Math.max(1, Math.round(trilho.clientWidth / (largura + gap)));
+          var primeiro = Math.round(x / (largura + gap)) + 1;
+          var ultimo = Math.min(itens.length, primeiro + porTela - 1);
+          conta.textContent = (porTela > 1 ? primeiro + '–' + ultimo : String(primeiro)) + ' / ' + itens.length;
+        }
+      }
+    };
 
-sr.reveal('.scroll')
-sr.reveal('.scroll-box', {interval: 200})
-sr.reveal('.scroll-left', {origin: 'left'})
-sr.reveal('.scroll-right', {origin: 'right'})
+    ant.addEventListener('click', function () { trilho.scrollBy({ left: -passo(), behavior: modo }); });
+    prox.addEventListener('click', function () { trilho.scrollBy({ left: passo(), behavior: modo }); });
 
-sr.reveal('.heading', {origin: 'top', distance: '40px', duration: 1500})
-sr.reveal('.p', {origin: 'bottom', distance: '30px', delay: 300})
-sr.reveal('.information .container', {origin: 'left', distance: '50px', interval: 200})
-sr.reveal('.information .map', {origin: 'bottom', distance: '50px', delay: 400})
-sr.reveal('.information .image', {origin: 'right', distance: '50px', delay: 500})
-sr.reveal('.depositions .box-container .box', {interval: 200, origin: 'bottom', distance: '40px'})
-sr.reveal('.jobs a', {origin: 'bottom', delay: 600})
-sr.reveal('footer', {origin: 'bottom', distance: '20px', delay: 300})
+    trilho.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); trilho.scrollBy({ left: passo(), behavior: modo }); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); trilho.scrollBy({ left: -passo(), behavior: modo }); }
+    });
+
+    var quadro;
+    trilho.addEventListener('scroll', function () {
+      if (quadro) return;
+      quadro = requestAnimationFrame(function () { quadro = null; atualizar(); });
+    }, { passive: true });
+
+    window.addEventListener('resize', atualizar);
+    atualizar();
+  }
+})();

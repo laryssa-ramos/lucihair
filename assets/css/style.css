@@ -1,995 +1,579 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;700;800&display=swap');
+/* =========================================================================
+   Studio Luci Hair Therapy
+   Folha única, escrita à mão. Substitui o CSS antigo, o Font Awesome, o
+   Boxicons e o ScrollReveal.
+
+   Paleta tirada do próprio logotipo: sépia e sálvia. Deliberadamente clara e
+   quente — o site é de um estúdio de beleza, não de uma linha de produtos.
+   ========================================================================= */
 
 :root {
-    /*--------COLORS--------*/
-    --first-color: #22723e;
-    --second-color: #d5ffcc;
-    --third-color: #124022;
-    --color-white: #fff;
-    --color-black: #000;
-    --bg: #d8fcc7;
+  /* --- superfícies --- */
+  --branco:         #ffffff;
+  --papel:          #f8fdf5;
+  --menta:          #d8fcc7;   /* a faixa verde-clara do site */
+  --verde-profundo: #124022;   /* seções escuras */
 
-    /*--------FONTS--------*/
-    --font-cursive: 'Great Vibes', cursive;
-    --body-font: 'Oswald', sans-serif;
+  /* --- tinta --- */
+  --tinta:     #16261a;
+  --muted:     #4a5a4e;   /* 7.11:1 sobre papel · 6.52 sobre menta */
+  --menta-dim: #d3ead0;   /* corpo em fundo escuro */
 
-    /*--------BORDER--------*/
-    --border: .1rem solid rgba(255, 255, 255, .3);
+  /* --- verdes da marca --- */
+  --verde-escuro: #124022;  /* títulos e botões */
+  --verde:        #22723e;  /* itálico dos títulos, olho, acentos — 5.74:1 sobre papel */
+  --menta-texto:  #bfe8b0;  /* acento em fundo escuro — 8.63:1 */
+  --verde-suave:  #8fbf7d;  /* só decorativo: filetes e bordas, nunca texto */
 
+  --linha:        #cfe4c3;
+  --linha-escura: rgba(191, 232, 176, .26);
+
+  /* --- escala tipográfica: 5 degraus, piso em 12px --- */
+  --t-xs:   12px;
+  --t-sm:   14px;
+  --t-base: 16px;
+  --t-lg:   19px;
+  --t-xl:   24px;
+
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-script:  'Great Vibes', 'Brush Script MT', cursive;
+
+  --pad-x: clamp(20px, 6vw, 104px);
+  --pad-y: clamp(64px, 9vw, 116px);
 }
 
-* {
-    font-family: var(--body-font);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-    transition: .2s linear;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--font-body);
+  font-size: var(--t-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-html {
-    font-size: 62.5%;
-    overflow-x: hidden;
-    scroll-padding-top: 10rem;
-    scroll-behavior: smooth;
+img, picture { max-width: 100%; }
+img { display: block; height: auto; }
+figure { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; border-radius: 2px; }
+.on-dark :focus-visible { outline-color: var(--menta-texto); }
+
+.skip-link {
+  position: absolute; z-index: 100; left: 14px; top: -60px;
+  padding: 12px 20px; background: var(--verde-profundo); color: var(--papel);
+  font-size: var(--t-sm); font-weight: 500; transition: top .2s;
+}
+.skip-link:focus { top: 14px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
+/* =========================================================================
+   Tipografia
+   ========================================================================= */
 
-.heading {
-    text-align: center;
-    color: var(--first-color);
-    font-family: var(--font-cursive);
-    text-transform: capitalize;
-    font-weight: 500;
-    font-size: 4.5rem;
-    margin: 2rem 0;
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  color: var(--verde-escuro);
 }
 
+h1 { font-size: clamp(44px, 6.4vw, 84px); }
+h2 { font-size: clamp(32px, 4.6vw, 58px); }
+h3 { font-size: clamp(21px, 2.2vw, 27px); line-height: 1.2; }
+
+/* A assinatura do site: segunda metade do título em itálico sálvia. */
+h1 em, h2 em, h3 em { font-style: italic; font-weight: 300; color: var(--verde); }
+.on-dark h1, .on-dark h2, .on-dark h3 { color: var(--papel); }
+.on-dark h1 em, .on-dark h2 em, .on-dark h3 em { color: var(--menta-texto); }
+
+p { margin: 0; }
+
+.eyebrow {
+  font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: var(--verde);
+}
+.on-dark .eyebrow { color: var(--menta-texto); }
+
+.lede  { font-size: var(--t-lg); line-height: 1.55; color: var(--tinta); }
+.body  { font-size: var(--t-base); line-height: 1.8; color: var(--muted); }
+.small { font-size: var(--t-sm); line-height: 1.7; color: var(--muted); }
+.on-dark .lede { color: var(--papel); }
+.on-dark .body, .on-dark .small { color: var(--menta-dim); }
+
+/* Único lugar onde a manuscrita da marca aparece. */
+.assinatura {
+  font-family: var(--font-script);
+  font-size: clamp(38px, 5vw, 54px);
+  line-height: 1.1;
+  color: var(--verde-escuro);
+}
+
+/* =========================================================================
+   Layout
+   ========================================================================= */
+
+.section  { padding: var(--pad-y) var(--pad-x); }
+.on-papel { background: var(--papel); }
+.on-branco { background: var(--branco); }
+.on-menta  { background: var(--menta); }
+.on-verde { background: var(--verde-profundo); color: var(--papel); }
+
+.section-head { max-width: 62ch; margin-bottom: clamp(32px, 5vw, 56px); }
+.section-head h2 { margin-top: 14px; }
+.section-head .body { margin-top: 18px; }
+.section-head.centro { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* Filete duplo: gesto gráfico próprio, tirado do traço fino do logotipo. */
+.regua {
+  width: 68px; height: 1px;
+  margin-top: 22px;
+  background: var(--verde-suave);
+  position: relative;
+}
+.regua::after {
+  content: ''; position: absolute; left: 0; top: 4px;
+  width: 28px; height: 1px; background: var(--verde-suave);
+}
+.centro .regua { margin-left: auto; margin-right: auto; }
+.centro .regua::after { left: 50%; transform: translateX(-50%); }
+
+/* =========================================================================
+   Botões e links
+   ========================================================================= */
 
 .btn {
-    margin-top: 5rem;
-    display: inline-block;
-    padding: 1.7rem 3rem;
-    font-size: 2.3rem;
-    color: var(--color-white);
-    background: var(--first-color);
-    border-radius: 0.5rem;
-    cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 11px;
+  min-height: 52px; padding: 0 28px;
+  border-radius: 999px;
+  background: var(--verde-escuro); color: var(--papel);
+  font-size: var(--t-sm); font-weight: 500; letter-spacing: .02em;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
 }
-.background {
-    background-color: var(--second-color);
+.btn:hover { transform: translateY(-2px); background: #1c5c31; box-shadow: 0 10px 24px rgba(18, 64, 34, .22); }
+.btn svg { flex: none; }
+
+.btn-linha {
+  background: transparent; color: var(--verde-escuro);
+  border: 1px solid var(--verde-suave);
+}
+.btn-linha:hover { background: var(--menta); color: var(--verde-escuro); box-shadow: none; }
+
+.btn-claro { background: var(--papel); color: var(--verde-profundo); }
+.btn-claro:hover { background: #fff; }
+
+.link-seta {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid currentColor;
+  font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--verde-escuro);
+  transition: gap .2s ease;
+}
+.link-seta:hover { gap: 20px; }
+.on-dark .link-seta { color: var(--menta-texto); }
+
+/* =========================================================================
+   Cabeçalho — claro, ao contrário do hero escuro típico
+   ========================================================================= */
+
+.cabecalho {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 12px var(--pad-x);
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  transition: background .3s ease, border-color .3s ease, padding .3s ease;
+}
+/* Passado o hero, vira barra sólida clara. */
+.cabecalho.solido {
+  padding: 8px var(--pad-x);
+  background: rgba(248, 253, 245, .95);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--linha);
 }
 
-.p{
-    display: flex;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: 300;
+/* O logotipo troca de versão junto com o fundo. */
+.marca-escura { display: none; }
+.cabecalho.solido .marca-clara { display: none; }
+.cabecalho.solido .marca-escura { display: block; }
+.cabecalho .marca { display: flex; align-items: center; gap: 12px; }
+.cabecalho .marca img { width: auto; height: 52px; transition: height .3s ease; }
+.cabecalho .marca span {
+  display: none;
+  color: var(--papel);
+  font-family: var(--font-display);
+  font-size: var(--t-base); line-height: 1.2;
+  letter-spacing: .01em;
+  max-width: 13ch;
+}
+.cabecalho.solido .marca span { color: var(--verde-escuro); }
+
+.menu { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 30px); }
+.menu a {
+  position: relative;
+  font-size: var(--t-sm);
+  color: rgba(255, 255, 255, .9);
+  transition: color .2s;
+}
+.menu a:hover { color: #fff; }
+.cabecalho.solido .menu a { color: var(--muted); }
+.cabecalho.solido .menu a:hover { color: var(--verde-escuro); }
+.menu a::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -6px;
+  height: 1px; background: var(--menta-texto);
+  transition: right .25s ease;
+}
+.menu a:hover::after { right: 0; }
+.cabecalho.solido .menu a::after { background: var(--verde-suave); }
+
+.cabecalho-acoes { display: flex; align-items: center; gap: 12px; }
+.btn-topo { min-height: 42px; padding: 0 20px; font-size: var(--t-xs); letter-spacing: .06em; text-transform: uppercase;
+  background: var(--papel); color: var(--verde-profundo); }
+.btn-topo:hover { background: #fff; }
+.cabecalho.solido .btn-topo { background: var(--verde-escuro); color: var(--papel); }
+.cabecalho.solido .btn-topo:hover { background: #1c5c31; }
+
+.menu-btn {
+  display: none;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.menu-btn span { position: relative; display: block; width: 22px; height: 1.5px; background: var(--papel); transition: background .2s; }
+.menu-btn span::before, .menu-btn span::after {
+  content: ''; position: absolute; left: 0; width: 22px; height: 1.5px; background: var(--papel);
+  transition: transform .25s ease, top .25s ease;
+}
+.menu-btn span::before { top: -7px; }
+.menu-btn span::after  { top:  7px; }
+.cabecalho.solido .menu-btn span,
+.cabecalho.solido .menu-btn span::before,
+.cabecalho.solido .menu-btn span::after { background: var(--verde-escuro); }
+.menu-btn[aria-expanded='true'] span { background: transparent; }
+.menu-btn[aria-expanded='true'] span::before { top: 0; transform: rotate(45deg); }
+.menu-btn[aria-expanded='true'] span::after  { top: 0; transform: rotate(-45deg); }
+
+/* =========================================================================
+   Hero — foto de sangramento total com véu, cabeçalho flutuando por cima
+   ========================================================================= */
+
+.hero {
+  position: relative;
+  display: grid; align-items: end;
+  min-height: 620px; height: 100svh; max-height: 900px;
+  overflow: hidden;
+  color: var(--papel);
+}
+.hero-media { position: absolute; inset: 0; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+
+/* Véu vertical no celular; na largura maior ele vira horizontal, protegendo a
+   coluna de texto sem escurecer a foto inteira. */
+.hero-veu {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg,
+    rgba(10, 38, 21, .95) 0%,
+    rgba(13, 48, 26, .86) 48%,
+    rgba(10, 38, 21, .34) 100%);
 }
 
-section {
-    padding: 2rem 7%;
+.hero-texto {
+  position: relative;
+  /* folga extra embaixo para o botão flutuante não encostar no CTA */
+  padding: 0 var(--pad-x) clamp(108px, 16vw, 128px);
+  max-width: 46rem;
+}
+.hero-texto .eyebrow { color: var(--menta-texto); }
+.hero-texto h1 { margin: 18px 0 0; color: var(--papel); max-width: 13ch; }
+.hero-texto h1 em { color: var(--menta-texto); }
+.hero-texto .body { margin-top: 22px; max-width: 44ch; color: rgba(255, 255, 255, .9); }
+
+.hero-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
+.hero-acoes .link-seta { color: var(--papel); }
+
+/* =========================================================================
+   Sobre
+   ========================================================================= */
+
+.sobre { display: grid; grid-template-columns: 1fr; gap: clamp(34px, 5vw, 76px); align-items: center; }
+
+.sobre-foto { display: grid; place-items: center; }
+.sobre-foto img {
+  width: min(430px, 88%); aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover; object-position: center 22%;
 }
 
-.whatsapp-icon {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    z-index: 9990;
+.sobre-texto h2 { margin-top: 14px; }
+.sobre-texto .assinatura { margin: 16px 0 4px; }
+.sobre-texto .body { margin-top: 20px; }
+.sobre-texto .body + .body { margin-top: 14px; }
+
+.credenciais {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 28px 0 32px;
+}
+.credenciais li {
+  padding: 8px 14px;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* =========================================================================
+   Terapia capilar
+   ========================================================================= */
+
+.terapia-grade {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 2vw, 26px);
+}
+.terapia-card { background: transparent; }
+.terapia-card figure {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--menta);
+}
+.terapia-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+.terapia-card:hover img { transform: scale(1.05); }
+.terapia-card h3 { margin-top: 16px; font-size: var(--t-xl); }
+.terapia-card .small { margin-top: 6px; }
+
+/* =========================================================================
+   Outros serviços — trilho com scroll-snap
+   ========================================================================= */
+
+.carrossel { position: relative; }
+.trilho {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 74%;
+  gap: clamp(12px, 1.6vw, 22px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.trilho::-webkit-scrollbar { display: none; }
+.trilho:focus-visible { outline-offset: -2px; }
+
+.servico { scroll-snap-align: start; }
+.servico figure { aspect-ratio: 3 / 4; overflow: hidden; background: var(--menta); }
+.servico img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+.servico:hover img { transform: scale(1.04); }
+.servico h3 { margin-top: 14px; font-size: var(--t-lg); }
+
+.carrossel-pe {
+  display: flex; align-items: center; justify-content: space-between; gap: 22px;
+  margin-top: 26px;
+}
+.carrossel-barra { position: relative; flex: 1; height: 1px; background: var(--linha); }
+.carrossel-barra span {
+  position: absolute; inset: 0 auto 0 0; height: 1px;
+  background: var(--verde);
+  transform-origin: left center;
+  transition: transform .25s ease;
+}
+.carrossel-ctrl { display: flex; align-items: center; gap: 9px; }
+.carrossel-conta {
+  margin-right: 6px;
+  font-family: var(--font-display); font-style: italic;
+  font-size: var(--t-base); color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.carrossel-btn {
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border: 1px solid var(--linha); border-radius: 50%;
+  color: var(--verde-escuro);
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.carrossel-btn:hover:not(:disabled) { background: var(--verde-escuro); border-color: var(--verde-escuro); color: var(--papel); }
+.carrossel-btn:disabled { opacity: .32; cursor: default; }
+
+/* =========================================================================
+   Trabalhos
+   ========================================================================= */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(8px, 1.2vw, 16px);
+}
+.galeria a { display: block; overflow: hidden; background: var(--menta); aspect-ratio: 1; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+.galeria a:hover img { transform: scale(1.06); }
+.galeria-pe { margin-top: clamp(26px, 4vw, 40px); text-align: center; }
+
+/* =========================================================================
+   Contato
+   ========================================================================= */
+
+.contato { display: grid; grid-template-columns: 1fr; gap: clamp(32px, 5vw, 62px); }
+
+.contato-dados dl { margin: 0; }
+.contato-dados .par { padding: 20px 0; border-top: 1px solid var(--linha-escura); }
+.contato-dados dt {
+  font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--menta-texto);
+}
+.contato-dados dd { margin: 8px 0 0; font-size: var(--t-lg); color: var(--papel); }
+.contato-dados dd a:hover { color: var(--menta-texto); }
+.contato-acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+.mapa { overflow: hidden; border: 1px solid var(--linha-escura); }
+.mapa iframe { display: block; width: 100%; height: clamp(280px, 42vw, 420px); border: 0; filter: grayscale(.2); }
+
+/* =========================================================================
+   Rodapé
+   ========================================================================= */
+
+.rodape {
+  padding: 40px var(--pad-x) 46px;
+  background: var(--verde-profundo);
+  color: var(--menta-dim);
+  text-align: center;
+  font-size: var(--t-xs);
+  border-top: 1px solid var(--linha-escura);
+}
+.rodape .logo { height: 118px; width: auto; margin: 0 auto 24px; }
+.rodape nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-bottom: 20px; }
+.rodape nav a { letter-spacing: .1em; text-transform: uppercase; }
+.rodape nav a:hover { color: var(--menta-texto); }
+.rodape p { margin: 0; }
+.credito { margin-top: 6px !important; color: #94ab93; }
+.credito a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(191, 232, 176, .42);
+  color: var(--menta-texto);
+  transition: border-color .2s ease, color .2s ease;
+}
+.credito a:hover { border-bottom-color: var(--menta-texto); color: #d8f0cd; }
+
+/* =========================================================================
+   Botão flutuante do WhatsApp
+   ========================================================================= */
+
+.zap {
+  position: fixed; z-index: 30; right: 16px; bottom: 20px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 19px;
+  border-radius: 999px;
+  background: var(--verde-profundo);
+  color: var(--menta-texto);
+  font-size: var(--t-sm); font-weight: 500;
+  box-shadow: 0 12px 30px rgba(18, 64, 34, .34);
+  transition: transform .2s ease, background .2s ease;
+}
+.zap:hover { transform: translateY(-2px); background: #1c5c31; }
+.zap svg { flex: none; }
+
+/* =========================================================================
+   Revelação ao rolar
+   ========================================================================= */
+
+.reveal { opacity: 0; transform: translateY(22px); }
+.reveal-pronto { transition: opacity .7s cubic-bezier(.4, 0, .2, 1), transform .7s cubic-bezier(.4, 0, .2, 1); }
+.reveal.visivel { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .09s; }
+.reveal.d2 { transition-delay: .18s; }
+
+/* =========================================================================
+   Responsivo — a partir do mobile
+   ========================================================================= */
+
+@media (min-width: 620px) {
+  .terapia-grade { grid-template-columns: repeat(4, 1fr); }
+  .galeria { grid-template-columns: repeat(3, 1fr); }
+  .trilho { grid-auto-columns: 42%; }
+}
+
+@media (min-width: 900px) {
+  .cabecalho .marca span { display: block; }
+  .hero-veu {
+    background: linear-gradient(90deg,
+      rgba(10, 38, 21, .94) 0%,
+      rgba(12, 45, 24, .84) 38%,
+      rgba(10, 38, 21, .42) 66%,
+      rgba(10, 38, 21, .12) 100%);
   }
-
-.whatsapp-icon img{
-    width:50px;
+  .hero { align-items: center; }
+  .hero-texto { padding-bottom: 0; padding-top: 72px; }
+  .sobre { grid-template-columns: .85fr 1.15fr; }
+  .contato { grid-template-columns: .9fr 1.1fr; align-items: center; }
+  .galeria { grid-template-columns: repeat(5, 1fr); }
+  .trilho { grid-auto-columns: 28%; }
+  .zap { right: 22px; bottom: 26px; padding: 14px 20px; }
 }
 
-/* HEADER */
-
-.header {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 3%;
-    text-transform: capitalize;
-    border-bottom: var(--border);
-    background: var(--color-white);
-    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-    z-index: 1000;
-
-
+@media (min-width: 1200px) {
+  .trilho { grid-auto-columns: 22%; }
 }
 
-.header .logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.7rem;
-}
+@media (max-width: 899px) {
+  /* backdrop-filter cria bloco de contenção para descendentes `fixed`: com ele
+     ligado, o `inset: 0` do painel do menu resolvia contra o cabeçalho (76px de
+     altura) em vez da viewport. Desligado aqui; o fundo sólido cobre. */
+  .cabecalho { backdrop-filter: none; }
+  .cabecalho.solido { background: var(--papel); backdrop-filter: none; }
+  /* Menu aberto: o cabeçalho precisa ler como claro mesmo sobre o hero. */
+  .cabecalho:has(.menu.aberto) .marca-clara { display: none; }
+  .cabecalho:has(.menu.aberto) .marca-escura { display: block; }
+  .cabecalho:has(.menu.aberto) .menu-btn span,
+  .cabecalho:has(.menu.aberto) .menu-btn span::before,
+  .cabecalho:has(.menu.aberto) .menu-btn span::after { background: var(--verde-escuro); }
+  .cabecalho:has(.menu.aberto) .menu-btn[aria-expanded='true'] span { background: transparent; }
 
-.header .logo h3 {
-
-    color: var(--first-color);
-}
-
-.header .logo img {
-    height: 7rem;
-    margin: 1rem;
-}
-
-.header .navbar a {
-    padding: .3rem .7rem;
-    font-size: 2rem;
-    color: var(--first-color);
-}
-
-.header .navbar a:hover {
-    background-color: var(--first-color);
-    color: var(--color-white);
-    border-radius: .3rem;
-}
-
-.header .icons {
-    position: absolute;
-    cursor: pointer;
-    font-size: 2.5rem;
-    margin-right: 2rem;
-}
-
-
-
-#menu-btn {
-    font-size: 1.5rem;
-    display: none;
-}
-
-#menu-btn:hover {
-    color: var(--letter);
-}
-
-/* HEADER */
-
-/* HOME */
-
-.home {
-    position: relative;
-    height: 94vh;
-    background: url(../images/bg.jpg) no-repeat;
-    background-size: cover;
-    background-position: top center;
-    background-attachment: fixed;
-
-}
-
-.home .content{
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    color: white;
-     z-index: 10;
+  /* Menu vira painel inteiro; nada some sem substituto. */
+  .menu-btn { display: flex; position: relative; z-index: 2; }
+  .cabecalho .marca { position: relative; z-index: 2; }
+  .cabecalho-acoes > .btn { display: none; }
+  .menu {
+    position: fixed; inset: 0;
+    flex-direction: column; align-items: flex-start; justify-content: center;
+    gap: 6px;
+    padding: 0 var(--pad-x);
+    background: var(--papel);
+    opacity: 0; visibility: hidden;
+    transition: opacity .28s ease, visibility .28s ease;
   }
-
-
-
-
-.home::after {
-    content: '';
-    background-color: rgba(69, 67, 67, 0.9);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    opacity: .7;
-    z-index: 1;
-}
-
-
-.home .content .btn i {
-    font-size: 2.8rem;
-    margin-right: 1rem;
-}
-
-.home .content .btn:hover {
-    background: var(--color-white);
-    color: var(--first-color);
-}
-
-/* HOME */
-
-/* ABOUT */
-.about .heading {
-    margin: 1.5rem 0 2rem 0;
-}
-
-.about .row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    border-radius: 30px;
-    width: 100%;
-    border: 2.5px solid var(--first-color);
-    margin: auto auto 6rem auto;
-}
-
-.about .row .image {
-    flex: 1 1 25rem;
-    text-align: center;
-}
-
-.about .row .image img {
-    width: 60%;
-    margin: 1rem;
-    border-radius: 50%;
-}
-
-.about .row .content {
-    flex: 1 1 25rem;
-    padding: 2rem;
-}
-
-.about .row .content p {
-    display: block;
-    font-size: 2.2rem;
-    color: #000;
-    padding: 1rem 0;
-    line-height: 1.5;
-
-}
-
-.about .row .content h3 {
-    font-size: 3.6rem;
-}
-
-.about .video {
-    display: flex;
-    margin-top: 2rem;
-    justify-content: center;
-    padding: 2rem;
-}
-
-/* ABOUT */
-
-/* THERAPY */
-
-.therapy .container{
-    margin-top: 1rem;
-}
-
-.therapy .container p{
-    text-align: center;
-}
-
-.therapy .container .content .box-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.therapy .container .content .box-container .box {
-    padding: .5rem;
-}
-
-.therapy .container .content .box-container .box img {
-    width: 20rem;
-    border-radius: 5px;
-}
-
-.therapy .container .content img:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-
-.therapy .container .content .box-container .box span {
-    display: flex;
-    justify-content: center;
-    font-size: 2.2rem;
-    margin-top: 1rem;
-}
-
-.therapy .container .content .button {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-
-.therapy .container .content .button a:hover {
-    transform: scale(1.1);
-}
-
-/* THERAPY */
-
-.service {
-    padding-bottom: 5rem;
-
-}
-
-.service p{
-    margin: -.7rem 0 3rem;
-}
-
-.service .container {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 57vh;
-}
-
-.service .wrapper {
-    position: relative;
-    max-width: 100rem;
-}
-
-.service .wrapper i {
-    top: 50%;
-    height: 46px;
-    width: 46px;
-    position: absolute;
-    cursor: pointer;
-    font-size: 1.2rem;
-    text-align: center;
-    line-height: 46px;
-    background: rgb(189, 186, 186);
-    border-radius: 50%;
-    transform: translateY(-50%);
-
-}
-
-.service .wrapper i:first-child {
-    left: -23px;
-    display: none;
-}
-
-.service .wrapper i:last-child {
-    right: -23px;
-}
-
-.service .wrapper .carousel {
-    display: flex;
-    font-size: 0px;
-    width: 100%;
-    cursor: pointer;
-    overflow: hidden;
-    white-space: nowrap;
-    scroll-behavior: smooth;
-}
-
-.carousel.dragging {
-    cursor: grab;
-    scroll-behavior: auto;
-}
-
-.carousel.dragging img {
-    pointer-events: none;
-}
-
-.service .wrapper .carousel .box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0 20px 20px;
-
-}
-
-.service .wrapper .carousel .box img {
-    object-fit: cover;
-    height: 25rem;
-    width: 18rem;
-    border-radius: 10px;
-}
-
-.carousel .box span {
-    margin-top: 1.3rem;
-    font-size: 2.4rem;
-    text-align: center;
-}
-
-
-
-.service .wrapper .carousel img:first-child {
-    margin-left: 0px;
-}
-
-
-/* jobs */
-
-
-.jobs h2{
-    margin-bottom: 3rem;
-}
-
-.jobs p{
-    margin: -2.5rem 0 2rem 0;
-}
-
-.jobs .gallery .image {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: auto;
-    width: 90%;
-}
-
-.jobs .gallery .image img {
-
-    width: 20rem;
-    border-radius: 10px;
-    height: 100%;
-    padding: 5px;
-    object-fit: cover;
-}
-.jobs a{
-    color: var(--first-color);
-    margin-top: 1.5rem;
-    font-size: 2.4rem;
-    display: flex;
-    justify-content: center;
-}
-
-.jobs a:hover{
-    color: var(--third-color);
-    transform: scale(1.1);
-
-}
-
-.jobs a i{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: .6rem;
-}
-
-
-/* depositions */
-
-
-
-.depositions{
-    display: none;
-}
-
-.depositions p{
-    margin: -2rem 0 2rem 0;
-}
-
-
-.depositions .box-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.depositions .box-container .box{
-    position: relative;
-    width: 420px;
-    height: 30rem;
-    background-color: var(--bg);
-    border-radius: 10px;
-    padding: 2.5rem;
-    margin: 1rem;
-}
-
-
-.depositions .box-container .box .content{
-    display: flex;
-    align-items: center;
-}
-
-.depositions .box-container .box .content img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.depositions .box-container .box .content .star{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 7rem;
-}
-
-.depositions .box-container .box .content .star i{
-    font-size: 2rem;
-    color: var(--first-color);
-}
-
-.depositions .box-container .box .content .star h1{
-    font-size: 2.5rem;
-}
-
-.depositions .box-container .box .descripition{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 40%;
-}
-
-.depositions .box-container .box .descripition p{
-    font-size: 1.7rem;
-    font-weight: 300;
-    padding: 1rem 1.5rem 1.2rem 0;
-}
-
-/* depositions */
-
-
-/* information */
-
-.information .information__content{
-    max-width: 100rem ;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 1px solid rgb(171, 171, 171);
-
-
-}
-
-
-.information .information__content .container{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 4rem;
-
-}
-
-.information .information__content .title{
-    font-size: 2.5rem;
-}
-
-.information .information__content span{
-    font-size: 1.8rem;
-}
-
-.information .information__content .container .time{
-   margin-bottom: 5rem;
-}
-
-
-.information .information__content .map{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-
-.information .information__content .map iframe{
-    width: 400px;
-    height: 300px;
-    margin: 1rem 0;
-}
-
-
-.information .information__content .image{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .menu.aberto { opacity: 1; visibility: visible; }
+  .menu a { font-family: var(--font-display); font-size: clamp(28px, 7.5vw, 40px); color: var(--verde-escuro); padding: 10px 0; }
+  .menu .so-mobile { color: var(--verde); }
 }
 
-.information .information__content .image img{
-    width: 18rem;
-}
-
-
-.information .information__content .image a{
-    font-size: 1.8rem;
-    color: #000;
-    cursor: pointer;
-}
-
-.information .information__content .image a:hover{
-    color: var(--first-color);
-
-}
-
-footer{
-    display: flex;
-    justify-content: center;
-    margin-top: 1.2rem;
-}
-
-footer p{
-    font-size: 1.4rem;
-    font-weight: 300;
-    text-align: center;
-}
-
-
-/* information */
-
-/* ANIMAÇÕES */
-
-.home .content h1 {
-    font-size: 7rem;
-    color: #ffffff;
-    animation: fadeInDown 1.5s ease forwards;
-}
-
-.home .content .btn {
-    animation: fadeInUp 1.8s ease forwards;
-}
-
-.header {
-    animation: slideDown 0.8s ease forwards;
-}
-
-.whatsapp-icon {
-    animation: fadeInUp 1s ease 1.5s both;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-@media (max-width: 1300px) {
-
-    .about .row .image img {
-        width: 70%;
-    }
-
-}
-
-@media (max-width: 1100px) {
-
-    html {
-        font-size: 60%;
-    }
-
-    section {
-        padding: 2rem;
-    }
-
-}
-
-@media (max-width: 1070px){
-    .header .navbar a {
-        font-size: 1.8rem;
-    }
-}
-
-@media (max-width: 1000px) {
-
-    /* .header {
-        position: fixed;
-    } */
-
-    .header .icons {
-        position: static;
-        cursor: pointer;
-        margin-left: 2rem;
-    }
-
-    #menu-btn {
-        display: inline-block;
-        font-size: 2.5rem;
-
-    }
-
-    .header .navbar {
-        position: absolute;
-        top: 100%;
-        right: -100%;
-        background-color: var(--color-white);
-        width: 40%;
-        text-align: center;
-        height: 100vh;
-        transition: all 400ms ease;
-    }
-
-    .header .navbar a {
-        color: var(--first-color);
-        position: relative;
-        display: block;
-        padding: .5rem;
-        margin: 1rem;
-        font-size: 2.5rem;
-        transition: all 400ms ease;
-        border-bottom: 1px solid grey;
-    }
-
-    .header .navbar a:hover,
-    .header .navbar a.active-link {
-        color: var(--color-white);
-        background-color: var(--first-color);
-    }
-
-    .header .navbar.active {
-        right: 0;
-    }
-
-    .home .content{
-
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-      }
-
-
-
-
-    .service .container {
-
-        min-height: 40vh;
-    }
-
-    .service p{
-
-        margin-bottom: 5rem;
-    }
-
-
-}
-
-@media (max-width: 870px) {
-
-    .service .wrapper {
-        max-width: 70rem;
-    }
-
-}
-
-@media (max-width: 780px) {
-
-    .about .row {
-        display: block;
-        align-items: center;
-    }
-
-    .about .row .image img {
-        width: 50%;
-    }
-
-    .about .row .content {
-        text-align: justify;
-    }
-
-    .about .row .content p {
-        margin: 0 2rem;
-    }
-
-
-}
-
-@media (max-width:748px){
-
-    .information .information__content .image{
-        margin-bottom: 2.5rem;
-    }
-
-}
-
-@media screen and (max-width: 690px) {
-
-    .home{
-        height: 78vh;
-    }
+@media (min-width: 900px) { .menu .so-mobile { display: none; } }
 
-
-    .service .container {
-        min-height: 30vh;
-    }
-
-     .service .wrapper {
-        max-width: 100%;
-    }
-
-}
-
-
-@media(max-width: 683px){
-
-    .information .information__content .container{
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-    }
-
-    .information .information__content .container .time{
-        margin-right: 15rem;
-    }
-
-}
-
-
-@media (max-width: 620px) {
-
-    .header .navbar {
-        width: 60%;
-
-    }
-
-    .about .row {
-        width: 100%;
-    }
-
-    .about .row .image img {
-        width: 50%;
-    }
-
-}
-
-
-@media (max-width: 580px) {
-
-    .home{
-        height: 70vh;
-    }
-
-
-    .home .content h1 {
-        margin-top: 5rem;
-        font-size: 5rem;
-    }
-
-}
-
-
-@media (max-width:540px) {
-
-    .about .row .content p {
-        font-size: 1.8rem;
-    }
-
-    .about .video iframe {
-        height: 250px;
-    }
-
-    .therapy .container p{
-    font-size: 2rem;
-}
-
-}
-
-@media (max-height: 530px){
-
-
-    .about .row .image img {
-        width: 40%;
-    }
-
-    .depositions .box-container .box .descripition p{
-        font-size: 1.8rem;
-        font-weight: 300;
-        padding: 0 1rem 1rem 0;
-    }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .trilho { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }
-
-
-
-@media (max-width:495px) {
-
-    .about .row .content p {
-        margin: 0;
-    }
-
-    .about .row .image img {
-        width: 80%;
-    }
-
-    .therapy .container p{
-        font-size: 2rem;
-    }
-
-    .service .container {
-
-        min-height: 27vh;
-    }
-
-}
-
-@media (max-width:480px) {
-
-    .about .video iframe {
-        height: 220px;
-    }
-
-    .therapy .container .content .box-container .box img {
-        width: 18rem;
-    }
-
-    .jobs .gallery .image img{
-        width: 15rem;
-    }
-
-}
-
-@media(max-width: 450px){
-
-    .information .information__content .container .time{
-        margin-right: 5rem;
-    }
-
-    .information .information__content .map iframe{
-        width: 300px;
-        height: 200px;
-        margin: 1rem 0;
-    }
-
-    .information .information__content .image img{
-        width: 14rem;
-    }
-
-}
-
-
-@media (max-width:440px) {
-
-
-    .depositions .box-container .box .content .star{
-        margin-left: 4.5rem;
-    }
-
-}
-
-@media (max-width: 400px){
-
-    .depositions .box-container .box .descripition p{
-        font-size: 1.5rem;
-    }
-}
-
-
-
-@media (max-height: 370px){
-
-    .home .content{
-        margin-top: 6rem;
-    }
-
-    .home .content h1{
-        font-size: 4rem;
-    }
-
-}
-
-
