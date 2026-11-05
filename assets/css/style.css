@@ -237,11 +237,6 @@ p { margin: 0; }
 .cabecalho.solido .menu a::after { background: var(--ouro); }
 
 .cabecalho-acoes { display: flex; align-items: center; gap: 12px; }
-.btn-topo { min-height: 42px; padding: 0 20px; font-size: var(--t-xs); letter-spacing: .06em; text-transform: uppercase;
-  background: var(--papel); color: var(--floresta-esc); }
-.btn-topo:hover { background: #fff; }
-.cabecalho.solido .btn-topo { background: var(--floresta); color: var(--papel); }
-.cabecalho.solido .btn-topo:hover { background: #1a5726; }
 
 .menu-btn {
   display: none;
@@ -584,7 +579,6 @@ p { margin: 0; }
   /* Menu vira painel inteiro; nada some sem substituto. */
   .menu-btn { display: flex; position: relative; z-index: 2; }
   .cabecalho .marca { position: relative; z-index: 2; }
-  .cabecalho-acoes > .btn { display: none; }
   .menu {
     position: fixed; inset: 0;
     flex-direction: column; align-items: flex-start; justify-content: center;
