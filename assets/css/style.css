@@ -296,7 +296,7 @@ p { margin: 0; }
 }
 .hero-texto .eyebrow { color: var(--ouro-claro); }
 .hero-texto h1 { margin: 18px 0 0; color: var(--papel); max-width: 13ch; }
-.hero-texto h1 em { color: var(--ouro-claro); }
+.hero-texto h1 em { color: var(--ouro-claro); white-space: nowrap; }
 .hero-texto .body { margin-top: 22px; max-width: 44ch; color: rgba(255, 255, 255, .9); }
 
 .hero-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
@@ -569,6 +569,9 @@ p { margin: 0; }
   .hero-texto { text-shadow: 0 1px 14px rgba(5, 24, 11, .55); }
   .hero-texto .btn { text-shadow: none; }
   .cabecalho:has(.menu.aberto) .marca span { color: var(--tinta); }
+  /* Sobre o hero o nome já está no título; no cabeçalho ele só aparece depois. */
+  .cabecalho .marca span { transition: opacity .3s ease, visibility .3s ease; }
+  .cabecalho:not(.solido):not(:has(.menu.aberto)) .marca span { opacity: 0; visibility: hidden; }
   .cabecalho.solido { background: var(--papel); backdrop-filter: none; }
   /* Menu aberto: o cabeçalho precisa ler como claro mesmo sobre o hero. */
   .cabecalho:has(.menu.aberto) .marca-clara { display: none; }
