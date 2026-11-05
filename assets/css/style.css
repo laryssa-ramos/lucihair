@@ -209,7 +209,7 @@ p { margin: 0; }
 .cabecalho .marca { display: flex; align-items: center; gap: 12px; }
 .cabecalho .marca img { width: auto; height: 52px; transition: height .3s ease; }
 .cabecalho .marca span {
-  display: none;
+  display: block;
   color: var(--papel);
   font-family: var(--font-display);
   font-size: var(--t-base); line-height: 1.2;
@@ -282,9 +282,10 @@ p { margin: 0; }
 .hero-veu {
   position: absolute; inset: 0;
   background: linear-gradient(0deg,
-    rgba(6, 32, 14, .96) 0%,
-    rgba(8, 42, 18, .88) 48%,
-    rgba(5, 24, 11, .32) 100%);
+    rgba(6, 32, 14, .9) 0%,
+    rgba(8, 42, 18, .62) 38%,
+    rgba(8, 42, 18, .3) 68%,
+    rgba(5, 24, 11, .22) 100%);
 }
 
 .hero-texto {
@@ -541,7 +542,6 @@ p { margin: 0; }
 }
 
 @media (min-width: 900px) {
-  .cabecalho .marca span { display: block; }
   .hero-veu {
     background: linear-gradient(90deg,
       rgba(6, 32, 14, .95) 0%,
@@ -565,6 +565,10 @@ p { margin: 0; }
      ligado, o `inset: 0` do painel do menu resolvia contra o cabeçalho (76px de
      altura) em vez da viewport. Desligado aqui; o fundo sólido cobre. */
   .cabecalho { backdrop-filter: none; }
+  /* Véu mais leve no celular: a sombra garante a leitura sobre a foto. */
+  .hero-texto { text-shadow: 0 1px 14px rgba(5, 24, 11, .55); }
+  .hero-texto .btn { text-shadow: none; }
+  .cabecalho:has(.menu.aberto) .marca span { color: var(--tinta); }
   .cabecalho.solido { background: var(--papel); backdrop-filter: none; }
   /* Menu aberto: o cabeçalho precisa ler como claro mesmo sobre o hero. */
   .cabecalho:has(.menu.aberto) .marca-clara { display: none; }
