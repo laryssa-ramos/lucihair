@@ -353,60 +353,92 @@ p { margin: 0; }
 .terapia-card h3 { margin-top: 16px; font-size: clamp(17px, 4.4vw, 27px); overflow-wrap: break-word; }
 .terapia-card .small { margin-top: 6px; }
 
+/* Subtítulo interno de seção, abaixo do section-head. */
+.subtitulo {
+  margin-bottom: clamp(20px, 3vw, 30px);
+  font-size: var(--t-xl);
+}
+
+.queixas {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--linha);
+}
+.queixas li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--linha);
+}
+.queixas svg { flex: none; margin-top: 4px; color: var(--ouro-tinta); }
+.queixas h4 {
+  margin: 0;
+  font-family: var(--font-display); font-weight: 500;
+  font-size: var(--t-xl); line-height: 1.2;
+  color: var(--tinta);
+}
+.queixas .small { margin-top: 4px; }
+
 /* =========================================================================
-   Outros serviços — trilho com scroll-snap
+   Como funciona — faixa escura com as fotos reais do estúdio
    ========================================================================= */
 
-.carrossel { position: relative; }
-.trilho {
+.como { display: grid; grid-template-columns: 1fr; gap: clamp(40px, 6vw, 84px); align-items: start; }
+
+.como-fotos {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 74%;
-  gap: clamp(12px, 1.6vw, 22px);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  padding-bottom: 4px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 16px);
 }
-.trilho::-webkit-scrollbar { display: none; }
-.trilho:focus-visible { outline-offset: -2px; }
+.como-fotos figure { overflow: hidden; aspect-ratio: 1; background: var(--floresta); }
+.como-fotos .como-principal { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
+.como-fotos img { width: 100%; height: 100%; object-fit: cover; }
+.como-principal img { object-position: center 30%; }
 
-.servico { scroll-snap-align: start; }
-.servico figure { aspect-ratio: 3 / 4; overflow: hidden; background: var(--creme); }
-.servico img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
-.servico:hover img { transform: scale(1.04); }
-.servico h3 { margin-top: 14px; font-size: var(--t-lg); }
+.etapas { margin: clamp(30px, 4vw, 44px) 0 0; padding: 0; list-style: none; }
+.etapas li {
+  display: grid; grid-template-columns: 52px 1fr; gap: 14px;
+  padding: 22px 0;
+  border-top: 1px solid var(--linha-escura);
+}
+.etapa-num {
+  font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-size: 34px; line-height: 1;
+  color: var(--ouro-claro);
+}
+.etapas h3 { font-size: var(--t-xl); }
+.etapas .small { margin-top: 6px; }
 
-.carrossel-pe {
-  display: flex; align-items: center; justify-content: space-between; gap: 22px;
-  margin-top: 26px;
+.como-nota {
+  margin: 8px 0 30px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--linha-escura);
+  font-style: italic;
 }
-.carrossel-barra { position: relative; flex: 1; height: 1px; background: var(--linha); }
-.carrossel-barra span {
-  position: absolute; inset: 0 auto 0 0; height: 1px;
-  background: var(--ouro-tinta);
-  transform-origin: left center;
-  transition: transform .25s ease;
+
+/* =========================================================================
+   Outros serviços — lista simples, sem fotos
+   ========================================================================= */
+
+.servicos-lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: clamp(24px, 4vw, 56px);
+  border-top: 1px solid var(--linha);
 }
-.carrossel-ctrl { display: flex; align-items: center; gap: 9px; }
-.carrossel-conta {
-  margin-right: 6px;
-  font-family: var(--font-display); font-style: italic;
-  font-size: var(--t-base); color: var(--muted);
-  font-variant-numeric: tabular-nums;
+.servicos-lista li {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--linha);
+  font-family: var(--font-display);
+  font-size: var(--t-lg); line-height: 1.3;
 }
-.carrossel-btn {
-  display: grid; place-items: center;
-  width: 44px; height: 44px;
-  border: 1px solid var(--linha); border-radius: 50%;
-  color: var(--tinta);
-  cursor: pointer;
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
+/* Losango em ouro: o mesmo filete fino do logotipo, em ponto. */
+.servicos-lista li::before {
+  content: ''; flex: none;
+  width: 6px; height: 6px;
+  background: var(--ouro);
+  transform: rotate(45deg);
 }
-.carrossel-btn:hover:not(:disabled) { background: var(--floresta); border-color: var(--floresta); color: var(--papel); }
-.carrossel-btn:disabled { opacity: .32; cursor: default; }
 
 /* =========================================================================
    Trabalhos
@@ -505,7 +537,7 @@ p { margin: 0; }
 @media (min-width: 620px) {
   .terapia-grade { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .galeria { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .trilho { grid-auto-columns: 42%; }
+  .queixas, .servicos-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 4vw, 56px); }
 }
 
 @media (min-width: 900px) {
@@ -522,12 +554,10 @@ p { margin: 0; }
   .sobre { grid-template-columns: .85fr 1.15fr; }
   .contato { grid-template-columns: .9fr 1.1fr; align-items: center; }
   .galeria { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .trilho { grid-auto-columns: 28%; }
+  .como { grid-template-columns: .9fr 1.1fr; }
+  .como-fotos { position: sticky; top: 96px; }
+  .queixas, .servicos-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .zap { right: 22px; bottom: 26px; padding: 14px 20px; }
-}
-
-@media (min-width: 1200px) {
-  .trilho { grid-auto-columns: 22%; }
 }
 
 @media (max-width: 899px) {
@@ -566,7 +596,6 @@ p { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .trilho { scroll-behavior: auto; }
   *, *::before, *::after {
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
