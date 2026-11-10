@@ -447,6 +447,8 @@ p { margin: 0; }
 }
 .especialidade + .especialidade { margin-top: clamp(56px, 8vw, 104px); }
 .especialidade figure { overflow: hidden; aspect-ratio: 4 / 5; background: var(--areia); }
+/* No celular o texto vem antes da foto; no computador a ordem volta a alternar. */
+.especialidade figure { order: 2; }
 .especialidade img { width: 100%; height: 100%; object-fit: cover; }
 .especialidade-texto h3 { margin-top: 10px; font-size: clamp(40px, 5.4vw, 64px); font-style: italic; font-weight: 300; color: var(--ouro-tinta); }
 .especialidade-texto .body { margin-top: 18px; max-width: 52ch; }
@@ -493,6 +495,44 @@ p { margin: 0; }
 }
 .cartao h3 { font-size: clamp(26px, 2.8vw, 34px); }
 .cartao .body { margin-top: 14px; }
+
+/* =========================================================================
+   Resultados — pares de antes e depois
+   ========================================================================= */
+
+.resultados {
+  display: grid; grid-template-columns: 1fr;
+  gap: clamp(32px, 4vw, 48px);
+}
+.resultado-par { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.resultado-foto { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: var(--creme); }
+.resultado-foto img { width: 100%; height: 100%; object-fit: cover; }
+.resultado-selo {
+  position: absolute; left: 12px; bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .92);
+  color: var(--tinta);
+  font-size: var(--t-xs); font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.resultado-selo.depois { background: var(--floresta-esc); color: var(--ouro-claro); }
+.resultado figcaption {
+  margin-top: 14px;
+  font-family: var(--font-display); font-size: var(--t-xl);
+  color: var(--tinta);
+}
+.resultados-nota { margin-top: clamp(28px, 4vw, 40px); max-width: 62ch; font-style: italic; }
+
+/* Galeria de turmas na página da mentoria. */
+.turmas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 16px);
+}
+.turmas figure { overflow: hidden; aspect-ratio: 1; background: var(--creme); }
+.turmas img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+.turmas figure:hover img { transform: scale(1.04); }
 
 /* =========================================================================
    Trabalhos
@@ -607,13 +647,20 @@ p { margin: 0; }
   .sobre { grid-template-columns: .85fr 1.15fr; }
   .contato { grid-template-columns: .9fr 1.1fr; align-items: center; }
   .galeria { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .como { grid-template-columns: .9fr 1.1fr; }
+  /* Fotos com largura máxima: o texto ganha o espaço e a foto não domina a tela. */
+  .como { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); }
   .como-fotos { position: sticky; top: 96px; }
-  .especialidade { grid-template-columns: .85fr 1.15fr; }
-  .especialidade.inverso { grid-template-columns: 1.15fr .85fr; }
+  .especialidade { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); }
+  .especialidade.inverso { grid-template-columns: minmax(0, 1fr) minmax(0, 360px); }
+  /* Blocos mais estreitos, em zigue-zague: cachos à esquerda, loiros à direita. */
+  .especialidade { max-width: 940px; }
+  .especialidade.inverso { margin-left: auto; }
+  .especialidade figure { order: 0; }
   .especialidade.inverso figure { order: 2; }
-  .mentoria-capa { grid-template-columns: 1.1fr .9fr; }
+  .mentoria-capa { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
   .cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .resultados { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .turmas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .queixas, .servicos-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .zap { right: 22px; bottom: 26px; padding: 14px 20px; }
 }
